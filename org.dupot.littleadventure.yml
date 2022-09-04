@@ -22,7 +22,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/imikado/dupotLittleAdventure/
-        commit: bab8728358fe1559adbc57f4de272654529d2bc5
+        commit: dcb25bc6c5f5def3b8f83cdfe257155da59c4522
 
 
 
