@@ -1,8 +1,8 @@
 id: org.dupot.littleadventure
 runtime: org.freedesktop.Platform
-runtime-version: "21.08"
+runtime-version: "23.08"
 sdk: org.freedesktop.Sdk
-command: littleAdventure.x86_64
+command: littleAdventure
 finish-args:
   - --share=ipc
   - --socket=pulseaudio
@@ -13,15 +13,14 @@ finish-args:
 modules:
   - name: littleAdventure
     buildsystem: simple
-    build-commands:
-      - install -Dm555 export/linux/littleAdventure.x86_64 /app/bin/littleAdventure.x86_64
-      - install -Dm644 export/linux/flatpack/512x512.png /app/share/icons/hicolor/512x512/apps/org.dupot.littleadventure.png
-      - install -Dm644 export/linux/flatpack/org.dupot.littleadventure.desktop /app/share/applications/org.dupot.littleadventure.desktop
-      - install -Dm644 export/linux/flatpack/org.dupot.littleadventure.appdata.xml /app/share/metainfo/org.dupot.littleadventure.appdata.xml
     sources:
       - type: git
         url: https://github.com/imikado/dupotLittleAdventure/
-        commit: d59958ff7df63671f9b8acdc302f6aefe6bcf79c
+        commit: 7d112563980bb50e9b85b6ff7e83e295bb9020f9
 
-
-
+    build-commands:
+      - install -Dm755 export/linux/littleAdventure.x86_64 $FLATPAK_DEST/bin/littleAdventure
+      - install -Dm555 export/linux/littleAdventure.pck $FLATPAK_DEST/bin/littleAdventure.pck
+      - install -Dm644 export/linux/flatpack/512x512.png $FLATPAK_DEST/share/icons/hicolor/512x512/apps/org.dupot.littleadventure.png
+      - install -Dm644 export/linux/flatpack/org.dupot.littleadventure.desktop $FLATPAK_DEST/share/applications/org.dupot.littleadventure.desktop
+      - install -Dm644 export/linux/flatpack/org.dupot.littleadventure.appdata.xml $FLATPAK_DEST/share/metainfo/org.dupot.littleadventure.appdata.xml
