@@ -16,11 +16,11 @@ modules:
     sources:
       - type: git
         url: https://github.com/imikado/dupotLittleAdventure/
-        commit: 3cc4e89a1986624c93b1a80eed7924175861d7d5
+        commit: e5d6834c96046f6bfa603a662e5ae9854352d096
 
     build-commands:
       - install -Dm755 export/linux/littleAdventure.x86_64 $FLATPAK_DEST/bin/littleAdventure
       - install -Dm555 export/linux/littleAdventure.pck $FLATPAK_DEST/bin/littleAdventure.pck
-      - install -Dm644 export/linux/flatpack/512x512.png $FLATPAK_DEST/share/icons/hicolor/512x512/apps/org.dupot.littleadventure.png
-      - install -Dm644 export/linux/flatpack/org.dupot.littleadventure.desktop $FLATPAK_DEST/share/applications/org.dupot.littleadventure.desktop
-      - install -Dm644 export/linux/flatpack/org.dupot.littleadventure.appdata.xml $FLATPAK_DEST/share/metainfo/org.dupot.littleadventure.appdata.xml
+      - install -Dm644 export/linux/flatpak/512x512.png $FLATPAK_DEST/share/icons/hicolor/512x512/apps/org.dupot.littleadventure.png
+      - install -Dm644 export/linux/flatpak/org.dupot.littleadventure.desktop $FLATPAK_DEST/share/applications/org.dupot.littleadventure.desktop
+      - install -Dm644 export/linux/flatpak/org.dupot.littleadventure.appdata.xml $FLATPAK_DEST/share/metainfo/org.dupot.littleadventure.appdata.xml
