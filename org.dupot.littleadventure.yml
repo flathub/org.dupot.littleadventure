@@ -16,7 +16,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/imikado/dupotLittleAdventure/
-        commit: aef6573d803fb8f6eb239ec57627cf27f97be78b
+        commit: 028c23259cc7c4b32c2e8239a307cefb52523966
 
     build-commands:
       - install -Dm755 export/linux/littleAdventure.x86_64 $FLATPAK_DEST/bin/littleAdventure
