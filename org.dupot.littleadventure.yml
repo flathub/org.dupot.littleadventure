@@ -1,10 +1,8 @@
 id: org.dupot.littleadventure
-base: org.godotengine.godot.BaseApp
-base-version: "3.5-23.08"
 runtime: org.freedesktop.Platform
 runtime-version: "23.08"
 sdk: org.freedesktop.Sdk
-command: godot-runner
+command: littleAdventure
 finish-args:
   - --share=ipc
   - --socket=pulseaudio
@@ -18,11 +16,11 @@ modules:
     sources:
       - type: git
         url: https://github.com/imikado/dupotLittleAdventure/
-        commit: 89de76f9748215fd3de06fb0291052fc6b082745
+        commit: aef6573d803fb8f6eb239ec57627cf27f97be78b
 
     build-commands:
-      - install -Dm555 export/linux/littleAdventure.pck /bin/godot-runner.pck
-      - install -Dm644 export/linux/flatpak/512x512.png /app/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
-      - install -Dm644 export/linux/flatpak/org.dupot.littleadventure.desktop /app/share/applications/${FLATPAK_ID}.desktop
-      - desktop-file-edit --set-key=Exec --set-value=godot-runner /app/share/applications/${FLATPAK_ID}.desktop
-      - install -Dm644 export/linux/flatpak/org.dupot.littleadventure.appdata.xml /app/share/appdata/${FLATPAK_ID}.appdata.xml
+      - install -Dm755 export/linux/littleAdventure.x86_64 $FLATPAK_DEST/bin/littleAdventure
+      - install -Dm555 export/linux/littleAdventure.pck $FLATPAK_DEST/bin/littleAdventure.pck
+      - install -Dm644 export/linux/flatpak/512x512.png $FLATPAK_DEST/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
+      - install -Dm644 export/linux/flatpak/org.dupot.littleadventure.desktop $FLATPAK_DEST/share/applications/${FLATPAK_ID}.desktop
+      - install -Dm644 export/linux/flatpak/org.dupot.littleadventure.appdata.xml $FLATPAK_DEST/share/metainfo/${FLATPAK_ID}.appdata.xml
