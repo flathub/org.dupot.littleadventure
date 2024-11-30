@@ -18,7 +18,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/imikado/dupotLittleAdventure/
-        commit: 5971f1ba6a8e49b4110ad9b420a22784755969cf
+        commit: 89de76f9748215fd3de06fb0291052fc6b082745
 
     build-commands:
       - install -Dm555 export/linux/littleAdventure.pck $FLATPAK_DEST/bin/godot-runner.pck
