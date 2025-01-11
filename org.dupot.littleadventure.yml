@@ -1,4 +1,4 @@
-id: org.dupot.littleadventure
+app-id: org.dupot.littleadventure
 runtime: org.freedesktop.Platform
 runtime-version: "23.08"
 sdk: org.freedesktop.Sdk
@@ -13,14 +13,26 @@ finish-args:
 modules:
   - name: littleAdventure
     buildsystem: simple
-    sources:
-      - type: git
-        url: https://github.com/imikado/dupotLittleAdventure/
-        commit: e768ecf77af53da98a50fc8f1b60f22f9cc41408
 
     build-commands:
-      - install -Dm755 export/linux/littleAdventure.x86_64 $FLATPAK_DEST/bin/littleAdventure
-      - install -Dm555 export/linux/littleAdventure.pck $FLATPAK_DEST/bin/littleAdventure.pck
-      - install -Dm644 export/linux/flatpak/512x512.png $FLATPAK_DEST/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
-      - install -Dm644 export/linux/flatpak/org.dupot.littleadventure.desktop $FLATPAK_DEST/share/applications/${FLATPAK_ID}.desktop
-      - install -Dm644 export/linux/flatpak/org.dupot.littleadventure.appdata.xml $FLATPAK_DEST/share/metainfo/${FLATPAK_ID}.appdata.xml
+      - install -Dm755 gameArchive/littleAdventure.x86_64 /app/bin/littleAdventure
+      - install -Dm555 gameArchive/littleAdventure.pck /app/bin/littleAdventure.pck
+      - install -Dm644 git_repo/export/linux/flatpak/16x16.png $FLATPAK_DEST/share/icons/hicolor/16x16/apps/org.dupot.littleadventure.png
+      - install -Dm644 git_repo/export/linux/flatpak/24x24.png $FLATPAK_DEST/share/icons/hicolor/24x24/apps/org.dupot.littleadventure.png
+      - install -Dm644 git_repo/export/linux/flatpak/32x32.png $FLATPAK_DEST/share/icons/hicolor/32x32/apps/org.dupot.littleadventure.png
+      - install -Dm644 git_repo/export/linux/flatpak/48x48.png $FLATPAK_DEST/share/icons/hicolor/48x48/apps/org.dupot.littleadventure.png
+      - install -Dm644 git_repo/export/linux/flatpak/64x64.png $FLATPAK_DEST/share/icons/hicolor/64x64/apps/org.dupot.littleadventure.png
+      - install -Dm644 git_repo/export/linux/flatpak/512x512.png $FLATPAK_DEST/share/icons/hicolor/512x512/apps/org.dupot.littleadventure.png
+      - install -Dm644 git_repo/export/linux/flatpak/${FLATPAK_ID}.desktop /app/share/applications/${FLATPAK_ID}.desktop
+      - install -Dm644 git_repo/export/linux/flatpak/${FLATPAK_ID}.appdata.xml /app/share/appdata/${FLATPAK_ID}.appdata.xml
+
+    sources:
+      - type: archive
+        dest: gameArchive
+        url: https://github.com/imikado/dupotLittleAdventure/releases/download/1.21.0/bundle.tar.gz
+        sha256: 3a4a45eaa017460045cf141304a69627357d432b9b960f3fc4d954ed217ff928
+      - type: git
+        dest: git_repo
+        url: https://github.com/imikado/dupotLittleAdventure/
+        tag: 1.21.0
+        commit: b948972e91065feb58bdb58c06ebc45553153270
