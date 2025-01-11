@@ -34,5 +34,5 @@ modules:
       - type: git
         dest: git_repo
         url: https://github.com/imikado/dupotLittleAdventure/
-        tag: 1.21.0
-        commit: b948972e91065feb58bdb58c06ebc45553153270
+        tag: 1.21.1
+        commit: 0b8029f9ef0e6405d4cb77529f482b088ad5a4e3
