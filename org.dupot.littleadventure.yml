@@ -29,10 +29,10 @@ modules:
     sources:
       - type: archive
         dest: gameArchive
-        url: https://github.com/imikado/dupotLittleAdventure/releases/download/1.21.0/bundle.tar.gz
-        sha256: 3a4a45eaa017460045cf141304a69627357d432b9b960f3fc4d954ed217ff928
+        url: https://github.com/imikado/dupotLittleAdventure/releases/download/1.22.0/bundle.tar.gz
+        sha256: ed9002b656838b291c8a4aacc6276fd3f56ecf3e1f0822c83a5a782449e5740f
       - type: git
         dest: git_repo
         url: https://github.com/imikado/dupotLittleAdventure/
-        tag: 1.21.1
-        commit: 0b8029f9ef0e6405d4cb77529f482b088ad5a4e3
+        tag: 1.22.0
+        commit: 111c7479c907df33363d8e3ca23f39d0f71cb625
