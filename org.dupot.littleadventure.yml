@@ -1,12 +1,15 @@
 app-id: org.dupot.littleadventure
+base: org.godotengine.godot.BaseApp
+base-version: '4.7'
 runtime: org.freedesktop.Platform
-runtime-version: "25.08"
+runtime-version: '26.08'
 sdk: org.freedesktop.Sdk
 command: littleAdventure
 finish-args:
   - --share=ipc
   - --socket=pulseaudio
-  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
   - --device=dri
   - --persist=.local/share/godot/app_userdata/LittleAdventure
 
@@ -15,24 +18,27 @@ modules:
     buildsystem: simple
 
     build-commands:
-      - install -Dm755 gameArchive/littleAdventure.x86_64 /app/bin/littleAdventure
-      - install -Dm555 gameArchive/littleAdventure.pck /app/bin/littleAdventure.pck
-      - install -Dm644 git_repo/export/linux/flatpak/16x16.png $FLATPAK_DEST/share/icons/hicolor/16x16/apps/org.dupot.littleadventure.png
-      - install -Dm644 git_repo/export/linux/flatpak/24x24.png $FLATPAK_DEST/share/icons/hicolor/24x24/apps/org.dupot.littleadventure.png
-      - install -Dm644 git_repo/export/linux/flatpak/32x32.png $FLATPAK_DEST/share/icons/hicolor/32x32/apps/org.dupot.littleadventure.png
-      - install -Dm644 git_repo/export/linux/flatpak/48x48.png $FLATPAK_DEST/share/icons/hicolor/48x48/apps/org.dupot.littleadventure.png
-      - install -Dm644 git_repo/export/linux/flatpak/64x64.png $FLATPAK_DEST/share/icons/hicolor/64x64/apps/org.dupot.littleadventure.png
-      - install -Dm644 git_repo/export/linux/flatpak/512x512.png $FLATPAK_DEST/share/icons/hicolor/512x512/apps/org.dupot.littleadventure.png
-      - install -Dm644 git_repo/export/linux/flatpak/${FLATPAK_ID}.desktop /app/share/applications/${FLATPAK_ID}.desktop
-      - install -Dm644 git_repo/export/linux/flatpak/${FLATPAK_ID}.appdata.xml /app/share/appdata/${FLATPAK_ID}.appdata.xml
+      - install -Dm755 littleAdventure.sh /app/bin/littleAdventure
+      - install -Dm644 gameArchive/littleAdventure.pck /app/bin/littleAdventure.pck
+      - install -Dm644 gameArchive/icons/16x16.png $FLATPAK_DEST/share/icons/hicolor/16x16/apps/org.dupot.littleadventure.png
+      - install -Dm644 gameArchive/icons/24x24.png $FLATPAK_DEST/share/icons/hicolor/24x24/apps/org.dupot.littleadventure.png
+      - install -Dm644 gameArchive/icons/32x32.png $FLATPAK_DEST/share/icons/hicolor/32x32/apps/org.dupot.littleadventure.png
+      - install -Dm644 gameArchive/icons/48x48.png $FLATPAK_DEST/share/icons/hicolor/48x48/apps/org.dupot.littleadventure.png
+      - install -Dm644 gameArchive/icons/64x64.png $FLATPAK_DEST/share/icons/hicolor/64x64/apps/org.dupot.littleadventure.png
+      - install -Dm644 gameArchive/icons/128x128.png $FLATPAK_DEST/share/icons/hicolor/128x128/apps/org.dupot.littleadventure.png
+      - install -Dm644 gameArchive/icons/256x256.png $FLATPAK_DEST/share/icons/hicolor/256x256/apps/org.dupot.littleadventure.png
+      - install -Dm644 gameArchive/icons/512x512.png $FLATPAK_DEST/share/icons/hicolor/512x512/apps/org.dupot.littleadventure.png
+      - install -Dm644 gameArchive/${FLATPAK_ID}.desktop $FLATPAK_DEST/share/applications/${FLATPAK_ID}.desktop
+      - install -Dm644 gameArchive/${FLATPAK_ID}.appdata.xml $FLATPAK_DEST/share/metainfo/${FLATPAK_ID}.metainfo.xml
 
     sources:
       - type: archive
         dest: gameArchive
-        url: https://github.com/imikado/dupotLittleAdventure/releases/download/1.23.0/bundle.tar.gz
-        sha256: aace9da771e6f00904e1ff182cd3f3af3b50710049f04b1b8d90ceb5414fcd55
-      - type: git
-        dest: git_repo
-        url: https://github.com/imikado/dupotLittleAdventure/
-        tag: 1.22.0
-        commit: 111c7479c907df33363d8e3ca23f39d0f71cb625
+        url: https://github.com/imikado/dupotLittleAdventure/releases/download/1.23.1/bundle.tar.gz
+        sha256: 69e0065d02c0919921545ae053a7a3a79a253c491b9bda281d1b387f96253da3
+
+      - type: script
+        dest-filename: littleAdventure.sh
+        commands:
+          - cd /app/bin/
+          - /app/bin/godot-runner --main-pack /app/bin/littleAdventure.pck "$@"
